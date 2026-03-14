@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found | Interiors With Purpose</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --midnight-navy: #2B3A52;
+    --skies-blue: #75BEC7;
+    --royal-purple: #605E90;
+    --fire-sun-gold: #E79A3B;
+    --warm-cream: #FAF6F0;
+    --storm-gray: #4C483D;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { font-size: 16px; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--storm-gray);
+    background: var(--warm-cream);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .color-bar { display: flex; height: 4px; width: 100%; }
+  .color-bar div { flex: 1; }
+
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bg-arch {
+    position: absolute;
+    width: 35vw;
+    height: 50vh;
+    border: 1px solid rgba(43, 58, 82, 0.04);
+    border-radius: 50% 50% 0 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .bg-arch-2 {
+    position: absolute;
+    width: 28vw;
+    height: 42vh;
+    border: 1px solid rgba(43, 58, 82, 0.03);
+    border-radius: 50% 50% 0 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -48%);
+  }
+
+  .inner {
+    position: relative;
+    z-index: 2;
+    max-width: 480px;
+  }
+
+  .arch-icon {
+    width: 50px;
+    height: 62px;
+    margin: 0 auto 2rem;
+    opacity: 0.4;
+  }
+
+  .error-code {
+    font-family: 'DM Serif Display', serif;
+    font-size: 4.5rem;
+    font-weight: 400;
+    color: var(--midnight-navy);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .error-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--royal-purple);
+    margin-bottom: 1.5rem;
+  }
+
+  .error-message {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--storm-gray);
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2.5rem;
+    width: 200px;
+  }
+
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--storm-gray);
+    opacity: 0.2;
+  }
+
+  .divider-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--midnight-navy);
+    margin: 0 1rem;
+    flex-shrink: 0;
+  }
+
+  .btn-home {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: var(--midnight-navy);
+    color: var(--warm-cream);
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.35s ease;
+  }
+
+  .btn-home:hover {
+    background: var(--royal-purple);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(43, 58, 82, 0.15);
+  }
+
+  footer {
+    background: var(--midnight-navy);
+    color: rgba(250, 246, 240, 0.4);
+    padding: 2rem 8%;
+    text-align: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="color-bar">
+  <div style="background: var(--midnight-navy)"></div>
+  <div style="background: var(--skies-blue)"></div>
+  <div style="background: var(--royal-purple)"></div>
+  <div style="background: var(--fire-sun-gold)"></div>
+</div>
+
+<div class="content">
+
+  <div class="inner">
+    <svg class="arch-icon" viewBox="0 0 60 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2 74V30C2 14.536 14.536 2 30 2C45.464 2 58 14.536 58 30V74" stroke="#2B3A52" stroke-width="2.5"/>
+      <circle cx="30" cy="6" r="3" fill="#75BEC7"/>
+    </svg>
+
+    <div class="error-code">404</div>
+    <div class="error-label">Page Not Found</div>
+    <p class="error-message">
+      This page doesn't seem to exist. Let's get you back to a space designed with purpose.
+    </p>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-dot"></div>
+      <div class="divider-line"></div>
+    </div>
+
+    <a href="index.html" class="btn-home">Back to Home</a>
+  </div>
+</div>
+
+<footer>
+  &copy; 2026 Interiors With Purpose. All rights reserved.
+</footer>
+
+<div class="color-bar">
+  <div style="background: var(--midnight-navy)"></div>
+  <div style="background: var(--skies-blue)"></div>
+  <div style="background: var(--royal-purple)"></div>
+  <div style="background: var(--fire-sun-gold)"></div>
+</div>
+
+</body>
+</html>

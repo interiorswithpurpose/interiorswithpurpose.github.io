@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Styled Spaces | Interiors With Purpose</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --midnight-navy: #2B3A52;
+    --skies-blue: #75BEC7;
+    --royal-purple: #605E90;
+    --fire-sun-gold: #E79A3B;
+    --warm-cream: #FAF6F0;
+    --storm-gray: #4C483D;
+    --white: #FFFFFF;
+    --navy-10: rgba(43, 58, 82, 0.08);
+    --pillar: var(--royal-purple);
+    --pillar-light: rgba(96, 94, 144, 0.08);
+    --pillar-mid: rgba(96, 94, 144, 0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--storm-gray);
+    background: var(--warm-cream);
+    overflow-x: hidden;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed;
+    top: 4px;
+    left: 0; right: 0;
+    z-index: 1000;
+    padding: 1.25rem 4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.5s ease;
+    background: transparent;
+  }
+
+  nav.scrolled {
+    background: rgba(250, 246, 240, 0.95);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 1px 20px rgba(43, 58, 82, 0.06);
+    padding: 0.75rem 4%;
+  }
+
+  nav.scrolled .nav-links a { color: var(--midnight-navy); }
+  nav.scrolled .nav-logo { color: var(--midnight-navy); }
+  nav.scrolled .nav-toggle span { background: var(--midnight-navy); }
+  nav.scrolled .nav-arch path { stroke: #2B3A52; }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--warm-cream);
+  }
+
+  .nav-arch { width: 36px; height: 44px; }
+
+  .nav-wordmark {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    line-height: 1.6;
+  }
+
+  .nav-wordmark span {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: lowercase;
+    opacity: 0.7;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm-cream);
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 4px;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 1.5px;
+    background: var(--fire-sun-gold);
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-links a.active::after {
+    width: 100%;
+    background: var(--pillar);
+  }
+
+  .nav-cta {
+    color: var(--warm-cream) !important;
+    background: var(--midnight-navy);
+    padding: 0.7rem 1.8rem;
+    transition: all 0.3s ease;
+  }
+
+  .nav-cta::after { display: none !important; }
+  .nav-cta:hover { background: var(--pillar); }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 8px;
+  }
+  .nav-toggle span { width: 24px; height: 1.5px; background: var(--warm-cream); }
+
+  /* ===== COLOR BAR ===== */
+  .color-bar { display: flex; height: 4px; width: 100%; }
+  .color-bar div { flex: 1; }
+
+  /* ===== BRAND DIVIDER ===== */
+  .brand-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 8%;
+  }
+
+  .brand-divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--storm-gray);
+    opacity: 0.2;
+    max-width: 400px;
+  }
+
+  .brand-divider-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--midnight-navy);
+    margin: 0 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .brand-divider.on-dark .brand-divider-line {
+    background: var(--warm-cream);
+    opacity: 0.12;
+  }
+
+  .brand-divider.on-dark .brand-divider-dot {
+    background: var(--warm-cream);
+    opacity: 0.3;
+  }
+
+  /* ===== PILLAR HERO ===== */
+  .pillar-hero {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--midnight-navy);
+    padding: 8rem 8% 5rem;
+  }
+
+  .pillar-hero-bg {
+    position: absolute;
+    right: -5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45vw;
+    height: 65vh;
+    border: 1px solid rgba(250, 246, 240, 0.04);
+    border-radius: 50% 50% 0 0;
+  }
+
+  .pillar-hero-bg-2 {
+    position: absolute;
+    right: -2%;
+    top: 50%;
+    transform: translateY(-48%);
+    width: 38vw;
+    height: 55vh;
+    border: 1px solid rgba(250, 246, 240, 0.03);
+    border-radius: 50% 50% 0 0;
+  }
+
+  .pillar-hero-accent {
+    position: absolute;
+    left: 8%;
+    top: 25%;
+    width: 1px;
+    height: 20vh;
+    background: linear-gradient(to bottom, var(--pillar), transparent);
+    opacity: 0.3;
+  }
+
+  .pillar-hero-dot {
+    position: absolute;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--pillar);
+    left: 8%;
+    top: 25%;
+    opacity: 0.5;
+  }
+
+  .pillar-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 620px;
+    animation: fadeUp 1s ease forwards;
+  }
+
+  .pillar-hero-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--pillar);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0.9;
+  }
+
+  .pillar-hero-label::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--pillar);
+  }
+
+  .pillar-hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.6rem, 5vw, 3.8rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--warm-cream);
+    margin-bottom: 1.25rem;
+  }
+
+  .pillar-hero h1 .accent {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--pillar);
+  }
+
+  .pillar-hero-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: rgba(250, 246, 240, 0.6);
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    max-width: 460px;
+  }
+
+  .btn-pillar {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: var(--pillar);
+    color: var(--warm-cream);
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.35s ease;
+  }
+
+  .btn-pillar:hover {
+    background: var(--warm-cream);
+    color: var(--midnight-navy);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+
+  /* ===== SECTIONS ===== */
+  section { padding: 5rem 8%; }
+
+  .section-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--pillar);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--pillar);
+  }
+
+  .section-heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 400;
+    color: var(--midnight-navy);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .section-heading .accent {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--pillar);
+  }
+
+  .section-intro {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--storm-gray);
+    line-height: 1.75;
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ===== THE APPROACH ===== */
+  .approach {
+    background: var(--white);
+  }
+
+  .approach-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    max-width: 1100px;
+  }
+
+  .approach-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .approach-step {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .step-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--pillar);
+    opacity: 0.3;
+    flex-shrink: 0;
+    width: 40px;
+    line-height: 1;
+    padding-top: 2px;
+  }
+
+  .step-content h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--midnight-navy);
+    margin-bottom: 0.4rem;
+  }
+
+  .step-content p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    color: var(--storm-gray);
+    line-height: 1.7;
+  }
+
+  .approach-highlight {
+    background: var(--pillar-light);
+    padding: 2.5rem;
+    border-left: 3px solid var(--pillar);
+  }
+
+  .approach-highlight h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--midnight-navy);
+    margin-bottom: 0.75rem;
+  }
+
+  .approach-highlight p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--storm-gray);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .approach-highlight .pillar-method {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--pillar);
+    margin-top: 1.25rem;
+  }
+
+  /* ===== SIGNATURE COLLECTIONS ===== */
+  .collections {
+    background: var(--warm-cream);
+  }
+
+  .collections-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1100px;
+  }
+
+  .collection-card {
+    background: var(--white);
+    border: 1px solid rgba(43, 58, 82, 0.06);
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .collection-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--pillar);
+    transition: height 0.4s ease;
+  }
+
+  .collection-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px rgba(43, 58, 82, 0.08);
+  }
+
+  .collection-card:hover::before { height: 4px; }
+
+  .collection-card-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: var(--midnight-navy);
+    margin-bottom: 0.5rem;
+  }
+
+  .collection-card-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--pillar);
+    margin-bottom: 1.25rem;
+    opacity: 0.85;
+  }
+
+  .collection-card-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    color: var(--storm-gray);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+  }
+
+  .collection-card-includes {
+    list-style: none;
+    border-top: 1px solid var(--navy-10);
+    padding-top: 1.25rem;
+  }
+
+  .collection-card-includes li {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    color: var(--storm-gray);
+    padding: 0.35rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .collection-card-includes li::before {
+    content: '';
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--pillar);
+    flex-shrink: 0;
+  }
+
+  .collection-note {
+    text-align: center;
+    margin-top: 2.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--storm-gray);
+    opacity: 0.7;
+  }
+
+  /* ===== CLIENT JOURNEY ===== */
+  .journey {
+    background: var(--midnight-navy);
+    color: var(--warm-cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .journey-bg-arch {
+    position: absolute;
+    right: -8%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35vw;
+    height: 50vh;
+    border: 1px solid rgba(250, 246, 240, 0.03);
+    border-radius: 50% 50% 0 0;
+  }
+
+  .journey .section-label { color: rgba(250, 246, 240, 0.5); }
+  .journey .section-label::before { background: rgba(250, 246, 240, 0.3); }
+  .journey .section-heading { color: var(--warm-cream); }
+  .journey .section-heading .accent { color: var(--pillar); }
+
+  .journey-intro {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: rgba(250, 246, 240, 0.6);
+    line-height: 1.75;
+    max-width: 600px;
+    margin-bottom: 3rem;
+  }
+
+  .journey-timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    max-width: 1100px;
+    position: relative;
+  }
+
+  .journey-timeline::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 5%;
+    right: 5%;
+    height: 1px;
+    background: rgba(250, 246, 240, 0.1);
+  }
+
+  .chapter {
+    text-align: center;
+    padding: 0 1.25rem;
+    position: relative;
+  }
+
+  .chapter-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--pillar);
+    margin: 0 auto 1.5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .chapter-dot::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1px solid var(--pillar);
+    opacity: 0.3;
+  }
+
+  .chapter-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--pillar);
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+  }
+
+  .chapter-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--warm-cream);
+    margin-bottom: 0.75rem;
+  }
+
+  .chapter-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    color: rgba(250, 246, 240, 0.5);
+    line-height: 1.6;
+  }
+
+  /* ===== WHAT TO KNOW ===== */
+  .details {
+    background: var(--white);
+  }
+
+  .details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    max-width: 1000px;
+  }
+
+  .detail-block h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--midnight-navy);
+    margin-bottom: 1rem;
+  }
+
+  .detail-block p, .detail-block li {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    color: var(--storm-gray);
+    line-height: 1.7;
+  }
+
+  .detail-block ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .detail-block li {
+    padding: 0.35rem 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+  }
+
+  .detail-block li::before {
+    content: '';
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--pillar);
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+
+  /* ===== CTA ===== */
+  .pillar-cta {
+    background: var(--warm-cream);
+    text-align: center;
+    padding: 5rem 8%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pillar-cta-inner {
+    max-width: 550px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .pillar-cta .section-label {
+    justify-content: center;
+  }
+
+  .pillar-cta .section-label::before { display: none; }
+
+  .pillar-cta-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--storm-gray);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .pillar-cta-email {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    color: var(--storm-gray);
+    margin-top: 1.5rem;
+  }
+
+  .pillar-cta-email a {
+    color: var(--midnight-navy);
+    text-decoration: none;
+    border-bottom: 1px solid var(--pillar);
+    padding-bottom: 2px;
+    transition: color 0.3s ease;
+  }
+
+  .pillar-cta-email a:hover { color: var(--pillar); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--midnight-navy);
+    color: rgba(250, 246, 240, 0.4);
+    padding: 3rem 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .footer-arch { width: 24px; height: 30px; opacity: 0.4; }
+
+  .footer-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  .footer-copy { font-family: 'DM Sans', sans-serif; font-size: 0.72rem; }
+
+  .footer-location {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    opacity: 0.6;
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  .collection-card.reveal:nth-child(2) { transition-delay: 0.15s; }
+  .collection-card.reveal:nth-child(3) { transition-delay: 0.3s; }
+
+  .chapter:nth-child(2) .chapter-dot { animation-delay: 0.1s; }
+  .chapter:nth-child(3) .chapter-dot { animation-delay: 0.2s; }
+  .chapter:nth-child(4) .chapter-dot { animation-delay: 0.3s; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 968px) {
+    .approach-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .collections-grid { grid-template-columns: 1fr; max-width: 450px; }
+    .journey-timeline { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .journey-timeline::before { display: none; }
+    .details-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    section { padding: 4rem 6%; }
+  }
+
+  @media (max-width: 600px) {
+    .journey-timeline { grid-template-columns: 1fr; }
+    .pillar-hero { min-height: 60vh; padding: 7rem 6% 4rem; }
+    .pillar-hero h1 { font-size: 2.2rem; }
+  }
+
+  /* ===== MOBILE MENU ===== */
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(250, 246, 240, 0.98);
+    backdrop-filter: blur(12px);
+    padding: 1.5rem 4%;
+    gap: 1.25rem;
+    box-shadow: 0 8px 24px rgba(43, 58, 82, 0.08);
+  }
+
+  .nav-links.open a {
+    color: var(--midnight-navy) !important;
+    font-size: 0.8rem;
+  }
+
+  .nav-links.open .nav-cta {
+    color: var(--warm-cream) !important;
+    background: var(--midnight-navy);
+    padding: 0.75rem 1.8rem;
+    text-align: center;
+  }
+
+  .nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 4px);
+  }
+
+  .nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -4px);
+  }
+
+  /* ===== GOOD TO KNOW ===== */
+  .good-to-know {
+    background: var(--white);
+    padding: 5rem 8%;
+  }
+
+  .qa-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    max-width: 1000px;
+    margin-top: 2rem;
+  }
+
+  .qa-item {}
+
+  .qa-question {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--midnight-navy);
+    margin-bottom: 0.5rem;
+  }
+
+  .qa-answer {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    color: var(--storm-gray);
+    line-height: 1.7;
+  }
+
+  /* ===== TESTIMONIALS ===== */
+  .testimonials {
+    background: var(--warm-cream);
+    padding: 5rem 8%;
+    text-align: center;
+  }
+
+  .testimonials .section-label {
+    justify-content: center;
+  }
+
+  .testimonials .section-label::before {
+    display: none;
+  }
+
+  .testimonial-featured {
+    max-width: 650px;
+    margin: 2rem auto 0;
+    background: var(--white);
+    border: 1px solid rgba(43, 58, 82, 0.06);
+    padding: 2.5rem 3rem;
+    position: relative;
+  }
+
+  .testimonial-featured::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--pillar);
+  }
+
+  .testimonial-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--midnight-navy);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+    text-align: left;
+  }
+
+  .testimonial-attr {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    color: var(--storm-gray);
+    text-align: left;
+    opacity: 0.7;
+  }
+
+  .testimonial-closing {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--storm-gray);
+    opacity: 0.6;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 968px) {
+    .qa-grid { grid-template-columns: 1fr; }
+    .testimonial-featured { padding: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Color Bar -->
+<div class="color-bar">
+  <div style="background: var(--midnight-navy)"></div>
+  <div style="background: var(--skies-blue)"></div>
+  <div style="background: var(--royal-purple)"></div>
+  <div style="background: var(--fire-sun-gold)"></div>
+</div>
+
+<!-- Nav -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">
+    <svg class="nav-arch" viewBox="0 0 60 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2 74V30C2 14.536 14.536 2 30 2C45.464 2 58 14.536 58 30V74" stroke="#FAF6F0" stroke-width="2.5"/>
+      <circle cx="30" cy="6" r="3" fill="#75BEC7"/>
+    </svg>
+    <div class="nav-wordmark">INTERIORS<br><span>with Purpose</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="styled-spaces.html" class="active">Styled Spaces</a></li>
+    <li><a href="the-career-edit.html">The Career Edit</a></li>
+    <li><a href="curated-moments.html">Curated Moments</a></li>
+    <li><a href="#connect" class="nav-cta">Connect</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Pillar Hero -->
+<section class="pillar-hero">
+
+  <div class="pillar-hero-content">
+    <div class="pillar-hero-label">Styled Spaces</div>
+    <h1>Intentional Design for <span class="accent">Everyday Spaces</span></h1>
+    <p class="pillar-hero-tagline">
+      Functional, personal, and purpose-driven. Curated organizing and interior styling
+      services that support clarity and intentional living in every room.
+    </p>
+    <a href="#connect" class="btn-pillar">Book a Face to Space</a>
+  </div>
+</section>
+
+<!-- Brand Divider -->
+<div class="brand-divider">
+  <div class="brand-divider-line"></div>
+  <div class="brand-divider-dot"></div>
+  <div class="brand-divider-line"></div>
+</div>
+
+<!-- The Approach (merged with Journey) -->
+<section class="journey">
+  <div class="section-label reveal">The Approach</div>
+  <h2 class="section-heading reveal">Four Chapters, <span class="accent">One Story</span></h2>
+  <p class="journey-intro reveal">
+    Every project starts with a Face to Space consultation and follows a chapter-based journey
+    guided by our signature method: Review. Release. Reclaim. Donate.
+  </p>
+
+  <div class="journey-timeline reveal">
+    <div class="chapter">
+      <div class="chapter-dot"></div>
+      <div class="chapter-label">Chapter 1</div>
+      <div class="chapter-name">Story Unlocked</div>
+      <div class="chapter-desc">Discovery and assessment. We learn your space, your story, and your goals.</div>
+    </div>
+    <div class="chapter">
+      <div class="chapter-dot"></div>
+      <div class="chapter-label">Chapter 2</div>
+      <div class="chapter-name">Plan of Purpose</div>
+      <div class="chapter-desc">Your personalized roadmap with room-by-room direction and sourcing strategy.</div>
+    </div>
+    <div class="chapter">
+      <div class="chapter-dot"></div>
+      <div class="chapter-label">Chapter 3</div>
+      <div class="chapter-name">Design in Motion</div>
+      <div class="chapter-desc">Hands-on execution. Sorting, styling, sourcing, and transforming your space.</div>
+    </div>
+    <div class="chapter">
+      <div class="chapter-dot"></div>
+      <div class="chapter-label">Chapter 4</div>
+      <div class="chapter-name">The Reveal</div>
+      <div class="chapter-desc">Your finished space, complete with systems to sustain the transformation.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Brand Divider on Dark -->
+<div class="brand-divider on-dark" style="background: var(--midnight-navy);">
+  <div class="brand-divider-line"></div>
+  <div class="brand-divider-dot"></div>
+  <div class="brand-divider-line"></div>
+</div>
+
+<!-- Signature Collections -->
+<section class="collections">
+  <div class="section-label reveal">Signature Collections</div>
+  <h2 class="section-heading reveal">Choose Your <span class="accent">Starting Point</span></h2>
+  <p class="section-intro reveal">
+    Each collection is designed to meet you where you are - whether you need a light reset
+    or a full transformation. All begin with a Face to Space consultation.
+  </p>
+
+  <div class="collections-grid">
+
+    <div class="collection-card reveal">
+      <div class="collection-card-name">The Reset</div>
+      <div class="collection-card-subtitle">Clarity starts here</div>
+      <p class="collection-card-desc">
+        Ideal for decluttering and setting clarity. Perfect when a space feels heavy,
+        disorganized, or you're ready to simplify and breathe.
+      </p>
+      <ul class="collection-card-includes">
+        <li>Face to Space consultation</li>
+        <li>Decluttering + sorting session</li>
+        <li>Triple R&D method applied</li>
+        <li>Organization system setup</li>
+        <li>Plan of Purpose document</li>
+      </ul>
+    </div>
+
+    <div class="collection-card reveal">
+      <div class="collection-card-name">The Refresh</div>
+      <div class="collection-card-subtitle">A light transformation</div>
+      <p class="collection-card-desc">
+        When the bones are good but the space needs a lift. A curated update to what you already
+        have, with intentional styling and functional improvements.
+      </p>
+      <ul class="collection-card-includes">
+        <li>Everything in The Reset</li>
+        <li>Space planning + layout refresh</li>
+        <li>Curated decor sourcing</li>
+        <li>Styling + finishing touches</li>
+        <li>Product recommendation guide</li>
+      </ul>
+    </div>
+
+    <div class="collection-card reveal">
+      <div class="collection-card-name">The Full Reset</div>
+      <div class="collection-card-subtitle">The complete experience</div>
+      <p class="collection-card-desc">
+        A full experience for moving, life transitions, or total redesign. We reimagine
+        your space from foundation to finishing details.
+      </p>
+      <ul class="collection-card-includes">
+        <li>Everything in The Refresh</li>
+        <li>Full room redesign + styling</li>
+        <li>Furniture + decor sourcing</li>
+        <li>Move-in unpacking + setup</li>
+        <li>Extended support + follow-up</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <p class="collection-note reveal">
+    All collections are tailored to your space and needs. Rates provided during consultation.
+  </p>
+</section>
+
+
+<!-- Good to Know -->
+<section class="good-to-know">
+  <div class="section-label reveal">Good to Know</div>
+  <h2 class="section-heading reveal">A Few Quick <span class="accent">Answers</span></h2>
+
+  <div class="qa-grid reveal">
+    <div class="qa-item">
+      <p class="qa-question">Where do you serve?</p>
+      <p class="qa-answer">Styled Spaces is based in the Greater Atlanta area. Virtual consultations are available for select services - just ask during your Face to Space call.</p>
+    </div>
+    <div class="qa-item">
+      <p class="qa-question">How long does a project take?</p>
+      <p class="qa-answer">Most projects are completed within one to two sessions depending on scope. Your Face to Space consultation will include a clear timeline tailored to your space and goals.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Brand Divider -->
+<div class="brand-divider">
+  <div class="brand-divider-line"></div>
+  <div class="brand-divider-dot"></div>
+  <div class="brand-divider-line"></div>
+</div>
+
+<!-- Client Words -->
+<section class="testimonials">
+  <div class="section-label reveal">Client Words</div>
+  <h2 class="section-heading reveal">Spaces <span class="accent">Transformed</span></h2>
+
+  <div class="testimonial-featured reveal">
+    <p class="testimonial-quote">"Nichole completely transformed how I see my space. The process was clear, intentional, and the result was beyond what I imagined."</p>
+    <p class="testimonial-attr">A.H. - Styled Spaces Client</p>
+  </div>
+
+  <p class="testimonial-closing reveal">Your space has a story. Let's write the next chapter together.</p>
+</section>
+
+<!-- Brand Divider -->
+<div class="brand-divider">
+  <div class="brand-divider-line"></div>
+  <div class="brand-divider-dot"></div>
+  <div class="brand-divider-line"></div>
+</div>
+
+<!-- CTA -->
+<section class="pillar-cta" id="connect">
+  <div class="pillar-cta-inner reveal">
+    <div class="section-label">Let's Begin</div>
+    <h2 class="section-heading">Ready for Your <span class="accent">Reset?</span></h2>
+    <p class="pillar-cta-text">
+      Every intentional space starts with a conversation. Book a Face to Space consultation
+      and let's explore what's possible for your home.
+    </p>
+    <a href="mailto:interiorswithpurpose@gmail.com?subject=IWP%20%7C%20Styled%20Spaces%20Inquiry" class="btn-pillar">Book a Face to Space</a>
+    <p class="pillar-cta-email">
+      or reach out at
+      <a href="mailto:interiorswithpurpose@gmail.com">interiorswithpurpose@gmail.com</a>
+    </p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-brand">
+    <svg class="footer-arch" viewBox="0 0 60 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2 74V30C2 14.536 14.536 2 30 2C45.464 2 58 14.536 58 30V74" stroke="rgba(250,246,240,0.3)" stroke-width="2"/>
+      <circle cx="30" cy="6" r="3" fill="#75BEC7" opacity="0.4"/>
+    </svg>
+    <span class="footer-name">Interiors With Purpose</span>
+  </div>
+  <span class="footer-location">Serving the Greater Atlanta Area</span>
+  <span class="footer-copy">&copy; 2026 Interiors With Purpose. All rights reserved.</span>
+</footer>
+
+<div class="color-bar">
+  <div style="background: var(--midnight-navy)"></div>
+  <div style="background: var(--skies-blue)"></div>
+  <div style="background: var(--royal-purple)"></div>
+  <div style="background: var(--fire-sun-gold)"></div>
+</div>
+
+<script>
+  const nav = document.getElementById('navbar');
+  const navArch = nav.querySelector('.nav-arch path');
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY > 60;
+    nav.classList.toggle('scrolled', scrolled);
+    if (navArch) navArch.setAttribute('stroke', scrolled ? '#2B3A52' : '#FAF6F0');
+  });
+
+  const reveals = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => revealObserver.observe(el));
+
+  // Mobile menu toggle
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('active');
+      navLinks.classList.toggle('open');
+    });
+    // Close menu when a link is clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('active');
+        navLinks.classList.remove('open');
+      });
+    });
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+
+</body>
+</html>
