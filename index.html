@@ -156,6 +156,7 @@
     min-height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     position: relative;
     overflow: hidden;
     background: var(--warm-cream);
@@ -205,6 +206,14 @@
   .hero-accent-dot.dot-2 { left: 12%; top: 70%; background: var(--fire-sun-gold); }
   .hero-accent-dot.dot-3 { right: 15%; top: 25%; background: var(--royal-purple); }
 
+  .hero-logo {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 4%;
+  }
   .hero-content {
     max-width: 750px;
     position: relative;
@@ -880,7 +889,7 @@
     .pillars-grid { grid-template-columns: 1fr; max-width: 500px; }
     .about-grid { grid-template-columns: 1fr; gap: 3rem; }
     .about-visual { max-width: 350px; margin: 0 auto; }
-    .nav-links { display: none; }
+    .nav-links { display: none; }.hero-logo { display: none; }
     .nav-toggle { display: flex; }
     section { padding: 5rem 6%; }
   }
@@ -1064,6 +1073,9 @@
         </svg>
       </a>
     </div>
+  </div>
+<div class="hero-logo">
+    <img src="images/logo-navy.png" alt="Interiors With Purpose" style="width: 100%; max-width: 360px;">
   </div>
 </section>
 
