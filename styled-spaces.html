@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Styled Spaces | Interiors With Purpose</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;1,400;1,500;1,600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -953,11 +954,7 @@
 <!-- Nav -->
 <nav id="navbar">
   <a href="index.html" class="nav-logo">
-    <svg class="nav-arch" viewBox="0 0 60 74" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M2 74V30C2 14.536 14.536 2 30 2C45.464 2 58 14.536 58 30V74" stroke="#FAF6F0" stroke-width="2.5"/>
-      <circle cx="30" cy="6" r="3" fill="#75BEC7"/>
-    </svg>
-    <div class="nav-wordmark">INTERIORS<br><span>with Purpose</span></div>
+    <img src="images/logo-cream.png" alt="Interiors With Purpose" class="nav-logo-img" style="height: 52px; width: auto;">
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
@@ -1167,10 +1164,7 @@
 <!-- Footer -->
 <footer>
   <div class="footer-brand">
-    <svg class="footer-arch" viewBox="0 0 60 74" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M2 74V30C2 14.536 14.536 2 30 2C45.464 2 58 14.536 58 30V74" stroke="rgba(250,246,240,0.3)" stroke-width="2"/>
-      <circle cx="30" cy="6" r="3" fill="#75BEC7" opacity="0.4"/>
-    </svg>
+    <img src="images/submark-cream.png" alt="IWP" style="height: 32px; width: auto;">
     <span class="footer-name">Interiors With Purpose</span>
   </div>
   <span class="footer-location">Serving the Greater Atlanta Area</span>
@@ -1190,7 +1184,8 @@
   window.addEventListener('scroll', () => {
     const scrolled = window.scrollY > 60;
     nav.classList.toggle('scrolled', scrolled);
-    if (navArch) navArch.setAttribute('stroke', scrolled ? '#2B3A52' : '#FAF6F0');
+    const navLogoImg = nav.querySelector('.nav-logo-img');
+    if (navLogoImg) navLogoImg.src = scrolled ? 'images/logo-navy.png' : 'images/logo-cream.png';
   });
 
   const reveals = document.querySelectorAll('.reveal');
